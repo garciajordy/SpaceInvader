@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import ScrollingBackground from "../Entities/ScrollingBackground"
 import sprBg0 from '../content/sprBg0.png';
 import sprBg1 from '../content/sprBg1.png';
