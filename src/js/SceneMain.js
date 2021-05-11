@@ -24,7 +24,8 @@ class SceneMain extends Phaser.Scene {
       super({ key: "SceneMain" });
     }
 
-    preload() {
+  preload() {
+      
         this.load.image("sprBg0", sprBg0);
         this.load.image("sprBg1", sprBg1);
         this.load.spritesheet("sprExplosion", sprExplosion, {

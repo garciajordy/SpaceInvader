@@ -42,9 +42,13 @@ const config = {
                 type: 'asset',
             },
             {
+                test: /\.(png|mp3)$/,
+                use: [{ loader: 'url-loader'}]
+            },
+            {
 			    test: /\.(ogg|mp3|wav|mpe?g)$/i,
 			    use: 'file-loader'
-			}
+            }
             
 
             // Add your rules for custom modules here
