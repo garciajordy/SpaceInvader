@@ -1,28 +1,27 @@
+import ScrollingBackground from "../Entities/ScrollingBackground"
+import sprBg0 from '../content/sprBg0.png';
+import sprBg1 from '../content/sprBg1.png';
+import sprBtnPlay from '../content/sprBtnPlay.png';
+import sprBtnPlayHover from '../content/sprBtnPlayHover.png';
+import sprBtnPlayDown from '../content/sprBtnPlayDown.png';
+
+import sndBtnOver from '../content/sndBtnOver.wav';
+import sndBtnDown from '../content/sndBtnDown.wav';
+
 class SceneMainMenu extends Phaser.Scene {
     constructor() {
       super({ key: "SceneMainMenu" });
     }
     preload() {
-        this.load.image("sprBtnPlay", "content/sprBtnPlay.png");
-        this.load.image("sprBtnPlayHover", "content/sprBtnPlayHover.png");
-        this.load.image("sprBtnPlayDown", "content/sprBtnPlayDown.png");
-        this.load.image("sprBtnRestart", "content/sprBtnRestart.png");
-        this.load.image("sprBtnRestartHover", "content/sprBtnRestartHover.png");
-        this.load.image("sprBtnRestartDown", "content/sprBtnRestartDown.png");
-
-        this.load.audio("sndBtnOver", "content/sndBtnOver.wav");
-      this.load.audio("sndBtnDown", "content/sndBtnDown.wav");
-      this.load.image("sprBg0", "content/sprBg0.png");
-      this.load.image("sprBg1", "content/sprBg1.png");
-      this.load.image("sprBtnPlay", "content/sprBtnPlay.png");
-      this.load.image("sprBtnPlayHover", "content/sprBtnPlayHover.png");
-      this.load.image("sprBtnPlayDown", "content/sprBtnPlayDown.png");
-      this.load.image("sprBtnRestart", "content/sprBtnRestart.png");
-      this.load.image("sprBtnRestartHover", "content/sprBtnRestartHover.png");
-      this.load.image("sprBtnRestartDown", "content/sprBtnRestartDown.png");
-          
-      this.load.audio("sndBtnOver", "content/sndBtnOver.wav");
-      this.load.audio("sndBtnDown", "content/sndBtnDown.wav");
+     
+      this.load.image("sprBg0", sprBg0);
+      this.load.image("sprBg1", sprBg1);
+      this.load.image("sprBtnPlay", sprBtnPlay);
+      this.load.image("sprBtnPlayHover", sprBtnPlayHover);
+      this.load.image("sprBtnPlayDown", sprBtnPlayDown);
+  
+      this.load.audio("sndBtnOver", sndBtnOver);
+      this.load.audio("sndBtnDown", sndBtnDown);
     }
     
   create() {
@@ -74,3 +73,4 @@ class SceneMainMenu extends Phaser.Scene {
     }
   }
 }
+export default SceneMainMenu;

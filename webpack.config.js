@@ -24,6 +24,7 @@ const config = {
     ],
     module: {
         rules: [
+            
             {
                 test: /\.(js|jsx)$/i,
                 loader: 'babel-loader',
@@ -40,6 +41,11 @@ const config = {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
+            {
+			    test: /\.(ogg|mp3|wav|mpe?g)$/i,
+			    use: 'file-loader'
+			}
+            
 
             // Add your rules for custom modules here
             // Learn more about loaders from https://webpack.js.org/loaders/
