@@ -1,5 +1,6 @@
 import Entity from "../js/Entities"
 import Phaser from "phaser"
+import EnemyLaser from "./EnemyLaser"
 
 class GunShip extends Entity {
     constructor(scene, x, y) {

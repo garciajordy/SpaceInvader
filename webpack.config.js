@@ -30,25 +30,10 @@ const config = {
                 loader: 'babel-loader',
             },
             {
-                test: /\.css$/i,
-                use: [stylesHandler,'css-loader'],
-            },
-            {
-                test: /\.s[ac]ss$/i,
-                use: [stylesHandler, 'css-loader', 'sass-loader'],
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: 'asset',
-            },
-            {
-                test: /\.(png|mp3)$/,
-                use: [{ loader: 'url-loader'}]
-            },
-            {
-			    test: /\.(ogg|mp3|wav|mpe?g)$/i,
+			    test: /\.(ogg|mp3|png|wav|mpe?g)$/i,
 			    use: 'file-loader'
             }
+         
             
 
             // Add your rules for custom modules here

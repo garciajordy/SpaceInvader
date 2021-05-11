@@ -1,4 +1,6 @@
 import Entity from "../js/Entities"
+import PlayerLaser from "./PlayerLaser"
+
 class Player extends Entity {
     constructor(scene, x, y, key) {
         super(scene, x, y, key, "Player")
