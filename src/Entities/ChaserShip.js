@@ -3,7 +3,8 @@ import Phaser from "phaser"
 class ChaserShip extends Entity {
     constructor(scene, x, y) {
         super(scene, x, y, "sprEnemy1", "ChaserShip");
-        this.body.velocity.y = Phaser.Math.Between(50, 100);
+      this.body.velocity.y = Phaser.Math.Between(50, 100);
+      this.setData("score", 10)
         this.states = {
             MOVE_DOWN: "MOVE_DOWN",
             CHASE: "CHASE"

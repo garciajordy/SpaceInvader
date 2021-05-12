@@ -100,7 +100,17 @@ class SceneMain extends Phaser.Scene {
             this.game.config.height * 0.5,
             "sprPlayer"
           );
-    
+          this.scoreScene = this.add.text(
+            this.game.config.width * 0.025,
+            this.game.config.height * 0.925,
+            `Score: ${this.player.getData('score')}`,
+            {
+              color: '#d0c600',
+              fontFamily: 'sans-serif',
+              fontSize: '3vw',
+              lineHeight: 1.3,
+            },
+          );
           this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
           this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
           this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -185,7 +195,9 @@ class SceneMain extends Phaser.Scene {
         return arr;
       }
   update() {
-    
+    this.player.update();
+    this.scoreScene.text = `Score: ${this.player.getData('score')}`;
+
     if (!this.player.getData("isDead")) {
       this.player.update();
       if (this.keyW.isDown) {

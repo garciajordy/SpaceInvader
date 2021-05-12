@@ -30,7 +30,7 @@ const config = {
                 loader: 'babel-loader',
             },
             {
-			    test: /\.(ogg|mp3|png|wav|mpe?g)$/i,
+			    test: /\.(png|wav|mpe?g)$/i,
 			    use: 'file-loader'
             }
          
