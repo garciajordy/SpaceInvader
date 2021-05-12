@@ -3,10 +3,10 @@ import ScrollingBackground from "../Entities/ScrollingBackground"
 
 import sprBg0 from '../content/sprBg0.png';
 import sprBg1 from '../content/sprBg1.png';
-import sprBtnRestart from '../content/sprBtnRestart.png';
+import recordBtn from '../content/recordBtn.png';
 import sprBtnRestartHover from '../content/sprBtnRestartHover.png';
 import sprBtnRestartDown from '../content/sprBtnRestartDown.png';
-
+import sprBtnRestart from '../content/sprBtnRestart.png';
 import sndBtnOver from '../content/sndBtnOver.wav';
 import sndBtnDown from '../content/sndBtnDown.wav';
 
@@ -21,7 +21,7 @@ class SceneGameOver extends Phaser.Scene {
       this.load.image("sprBtnRestart", sprBtnRestart);
       this.load.image("sprBtnRestartHover", sprBtnRestartHover);
       this.load.image("sprBtnRestartDown", sprBtnRestartDown);
-  
+      this.load.image('recordBtn', recordBtn);
       this.load.audio("sndBtnOver", sndBtnOver);
       this.load.audio("sndBtnDown", sndBtnDown);
     }
@@ -44,9 +44,22 @@ class SceneGameOver extends Phaser.Scene {
         this.game.config.height * 0.5,
         "sprBtnRestart"
       );
-  
+      this.btnRecord = this.add.sprite(
+        this.game.config.width * 0.5,
+        this.game.config.height * 0.4,
+        "recordBtn"
+      );
+      this.btnRecord.setScale(0.4)
+      this.btnRecord.setInteractive();
       this.btnRestart.setInteractive();
-  
+      this.finalScore = this.add.text(this.game.config.width * 0.25, 12, `Score: ${localStorage.getItem("score")}`, {
+        fontFamily: 'monospace',
+        fontSize: 48,
+        fontStyle: 'bold',
+        color: '#ffffff',
+        align: 'center'
+      })
+      localStorage.setItem("score", 0)
       this.btnRestart.on("pointerover", function() {
         this.btnRestart.setTexture("sprBtnRestartHover"); // set the button texture to sprBtnPlayHover
         this.sfx.btnOver.play(); // play the button over sound
@@ -65,6 +78,9 @@ class SceneGameOver extends Phaser.Scene {
         this.btnRestart.setTexture("sprBtnRestart");
         this.scene.start("SceneMain");
       }, this);
+      this.btnRecord.on("pointerup", function () {
+        this.scene.start("SceneLeaderBoard");
+      }, this)
       this.backgrounds = [];
       for (var i = 0; i < 5; i++) {
         var keys = ["sprBg0", "sprBg1"];

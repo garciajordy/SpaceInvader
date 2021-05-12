@@ -5,6 +5,8 @@ import ChaserShip from '../Entities/ChaserShip';
 import CarrierShip from '../Entities/CarrierShip';
 import ScrollingBackground from '../Entities/ScrollingBackground';
 
+import getData from "../helper/api"
+
 import sprBg0 from '../content/sprBg0.png';
 import sprBg1 from '../content/sprBg1.png';
 import sprExplosion from '../content/sprExplosion.png';
@@ -22,6 +24,7 @@ import sndLaser from '../content/sndLaser.wav';
 class SceneMain extends Phaser.Scene {
     constructor() {
       super({ key: "SceneMain" });
+      this.score = 10
     }
 
   preload() {
@@ -89,6 +92,7 @@ class SceneMain extends Phaser.Scene {
           ],
           laser: this.sound.add("sndLaser")
         };
+        this.scoreText = this.add.text(16, 16, "score: 0", {fontSize: "32px", fill: "#fff"})
         this.backgrounds = [];
         for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
           var bg = new ScrollingBackground(this, "sprBg0", i * 10);
@@ -100,7 +104,6 @@ class SceneMain extends Phaser.Scene {
             this.game.config.height * 0.5,
             "sprPlayer"
           );
-    
           this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
           this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
           this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -147,19 +150,24 @@ class SceneMain extends Phaser.Scene {
           callbackScope: this,
           loop: true
         });
-        this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
-          if (enemy) {
-            if (enemy.onDestroy !== undefined) {
-              enemy.onDestroy();
+        this.physics.add.collider(
+          this.playerLasers,
+          this.enemies,
+          (playerLaser, enemy) => {
+            if (enemy && !this.player.getData('isDead')) {
+              if (enemy.onDestroy !== undefined) {
+                enemy.onDestroy();
+              }
+              
+              enemy.explode(true);
+              playerLaser.destroy();
             }
-          
-            enemy.explode(true);
-            playerLaser.destroy();
-          }
-        });
+          },
+        );
         this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
           if (!player.getData("isDead") &&
               !enemy.getData("isDead")) {
+                
             player.explode(false);
             player.onDestroy();
             enemy.explode(true);
@@ -168,6 +176,7 @@ class SceneMain extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
           if (!player.getData("isDead") &&
               !laser.getData("isDead")) {
+                
             player.explode(false);
             player.onDestroy();
             laser.destroy();
@@ -186,10 +195,15 @@ class SceneMain extends Phaser.Scene {
       }
   update() {
     
+    this.player.update();
+    
+    this.scoreText.setText(`Score: ${this.player.getData('score')}`) ;
+
     if (!this.player.getData("isDead")) {
       this.player.update();
       if (this.keyW.isDown) {
         this.player.moveUp();
+        
       }
       else if (this.keyS.isDown) {
         this.player.moveDown();
@@ -219,8 +233,9 @@ class SceneMain extends Phaser.Scene {
         if (enemy) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
+            
           }
-    
+          
           enemy.destroy();
         }
         for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
