@@ -158,7 +158,7 @@ class SceneMain extends Phaser.Scene {
               if (enemy.onDestroy !== undefined) {
                 enemy.onDestroy();
               }
-              
+              this.player.setScore(enemy.getData('score'));
               enemy.explode(true);
               playerLaser.destroy();
             }
