@@ -1,5 +1,6 @@
 function addName(player, newName) {
-   return player.naming = newName
+  player.naming = newName;
+  return player;
 }
 
 export default addName;

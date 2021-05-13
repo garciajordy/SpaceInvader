@@ -1,6 +1,7 @@
 function setScore(player, value) {
-    let score = player.score
-    let total = score + value
-    return player.score =total
+  const { score } = player;
+  const total = score + value;
+  player.score = total;
+  return player;
 }
 export default setScore;

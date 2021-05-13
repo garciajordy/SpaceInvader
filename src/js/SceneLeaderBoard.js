@@ -38,8 +38,6 @@ class SceneLeaderBoard extends Phaser.Scene {
 
     this.btnRestart.setInteractive();
 
-
-
     this.btnRestart.setInteractive();
     this.btnRestart.on('pointerup', () => {
       this.scene.start('SceneMain');

@@ -12,6 +12,16 @@ This is a simple endless runner. Enemies appear at the top of the canvas Some sh
 
 In the beginning, you can add your name and at the end you can check if your score is in the **Leaders Board** . The **Leaders Board** only show top 5 scores if you beat all scores your score will be on top of the other 4 scores.
 
+## Built with
+
+- JavaScript
+- Phaser 3
+- Webpack
+- Eslint
+- Babel
+- Jest
+- API
+
 ## How to play
 
 To control your ship you should use these **W,S,A,D**.These are UPS, DOWN, LEFT and RIGHT keyboards. To shoot enemies use **space** .
@@ -40,19 +50,15 @@ $ git clone https://github.com/garciajordy/SpaceInvader.git
 $ cd SpaceInvader
 ```
 
+## To run Jest test
+
+```
+$ npm run test
+```
+
 ## Live Demo
 
 - [Galaxy-wars](https://wonderful-hypatia-e608d4.netlify.app/)
-
-## Built with
-
-- JavaScript
-- Phaser 3
-- Webpack
-- Eslint
-- Babel
-- Jest
-- API
 
 👤 **Jordy Garcia**
 
