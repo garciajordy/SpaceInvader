@@ -34,6 +34,30 @@ You can play the game online by clicking [here](https://wonderful-hypatia-e608d4
 $ npm install --save-dev webpack
 ```
 
+# To play local
+
+### Install XAMPP
+
+Follow [this](https://www.wikihow.com/Install-XAMPP-for-Windows) guide to install XAMPP.
+
+> After installation follow these steps.
+
+```
+$ /opt/lampp/htdocs
+```
+
+```
+$ git clone https://github.com/garciajordy/SpaceInvader.git
+```
+
+> To start the server
+
+```
+sudo /opt/lampp/lampp start
+```
+
+> Click [here](http://localhost/SpaceInvader/dist/index.html) to play in your browser.
+
 ## Getting Started
 
 To get a local copy of the repository please run the following commands on your terminal:
