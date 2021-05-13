@@ -7,7 +7,7 @@ import sprBg0 from '../content/sprBg0.png';
 import sprBg1 from '../content/sprBg1.png';
 import sndBtnOver from '../content/sndBtnOver.wav';
 import sndBtnDown from '../content/sndBtnDown.wav';
-
+import sprBtnRestart from "../content/sprBtnRestart.png"
 class SceneLeaderBoard extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneLeaderBoard' });
@@ -17,6 +17,7 @@ class SceneLeaderBoard extends Phaser.Scene {
   preload() {
     this.load.image('sprBg0', sprBg0);
     this.load.image('sprBg1', sprBg1);
+    this.load.image('sprBtnRestart', sprBtnRestart);
     this.load.image('recordBtn', recordBtn);
     this.load.audio('sndBtnOver', sndBtnOver);
     this.load.audio('sndBtnDown', sndBtnDown);
@@ -32,26 +33,41 @@ class SceneLeaderBoard extends Phaser.Scene {
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.25,
       this.game.config.height * 0.925,
-      'sprBtnRestart',
+      'sprBtnRestart'
     );
 
- 
+    
+    
+    this.btnRestart.setInteractive();
 
-    this.btnRestart.on('pointerover', () => {
-      this.btnRestart.setTexture('sprBtnRestart');
-      this.sfx.btnOver.play();
-    });
-    this.btnRestart.on('pointerout', () => {
-      this.setTexture('sprBtnRestart');
-    });
 
-    this.btnRestart.on('pointerdown', () => {
-      this.btnRestart.setTexture('sprBtnRestart');
-      this.sfx.btnDown.play();
-    });
+    this.btnRestart = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.7,
+      "sprBtnRestart"
+    );
+   
+    this.btnRestart.setInteractive();
+    this.btnRestart.on("pointerup", function () {
+      this.scene.start("SceneMain");
+    }, this)
+    // this.btnRestart.on('pointerover', () => {
+    //   this.btnRestart.setTexture('sprBtnRestart');
+    //   this.sfx.btnOver.play(),
+    //   this;
+    // });
+    // this.btnRestart.on('pointerout', () => {
+    //   this.setTexture('sprBtnRestart');
+    // });
+
+    // this.btnRestart.on('pointerdown', () => {
+    //   this.btnRestart.setTexture('sprBtnRestart');
+    //   this.sfx.btnDown.play();
+    // });
     this.btnRestart.on('pointerup', () => {
       this.btnRestart.setTexture('sprBtnRestart');
-      this.scene.start('SceneMain');
+      this.scene.start('SceneMain'),
+        this;
     });
  
 
@@ -70,7 +86,6 @@ class SceneLeaderBoard extends Phaser.Scene {
       },
     );
     this.title.setOrigin(0.5);
-    this.btnRestart.setInteractive();
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
@@ -93,7 +108,7 @@ class SceneLeaderBoard extends Phaser.Scene {
           this.game.config.height * 0.3 + index * 50,
           `${index + 1}. ${elem.user}: ${elem.score}`,
           {
-            color: '#d0c600',
+            color: '#fff',
             fontFamily: 'sans-serif',
             fontSize: '3vw',
             lineHeight: 1.3,
@@ -113,26 +128,9 @@ class SceneLeaderBoard extends Phaser.Scene {
         },
       );
     }
+    
   }
-  
-  //  getScores() {
-  //    const data = this.array
-  //    console.log(data)
-  //    data.forEach((elem, index) => {
-  //      this.add.text(
-  //        this.game.config.width * 0.25,
-  //        this.game.config.height * 0.35 + index * 50,
-  //        `${index + 1}. ${elem.user}: ${elem.score}`,
-  //        {
-  //          color: '#d0c600',
-  //          fontFamily: 'sans-serif',
-  //          fontSize: '3vw',
-  //          lineHeight: 1.3,
-  //        },
-  //      );
-  //    });
-  //    getScores();
-  //  }
+ 
 
   update() {
     this.getScores();

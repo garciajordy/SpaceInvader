@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import ScrollingBackground from "../Entities/ScrollingBackground"
-
+import { getLocalScore } from '../helpers/storage';
+import { setData } from '../helpers/api';
 import sprBg0 from '../content/sprBg0.png';
 import sprBg1 from '../content/sprBg1.png';
 import recordBtn from '../content/recordBtn.png';
@@ -88,6 +89,10 @@ class SceneGameOver extends Phaser.Scene {
         var bg = new ScrollingBackground(this, key, i * 10);
         this.backgrounds.push(bg);
       }
+  
+  
+  
+    
     }
   }
 
