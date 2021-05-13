@@ -1,7 +1,6 @@
 import addName from "../src/helper/PlayerName"
-test('adds the new score to player', () => {
+test('adds new name to player', () => {
     let player = document.createElement('div');
-    //player.name = "me"
     addName(player,"test")
     expect(player.naming).toMatch("test");
     addName(player,"updated")
