@@ -38,11 +38,7 @@ class SceneLeaderBoard extends Phaser.Scene {
 
     this.btnRestart.setInteractive();
 
-    this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.7,
-      'sprBtnRestart',
-    );
+
 
     this.btnRestart.setInteractive();
     this.btnRestart.on('pointerup', () => {
@@ -96,7 +92,7 @@ class SceneLeaderBoard extends Phaser.Scene {
       this.add.text(
         this.game.config.width * 0.35,
         this.game.config.height * 0.35,
-        'Sorry unable to get score data',
+        '',
         {
           color: '#d0c600',
           fontFamily: 'sans-serif',
